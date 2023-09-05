@@ -1,4 +1,5 @@
 import { Router, Request, Response } from "express";
+import blogRoutes from "./blog"
 
 const router = Router();
 
@@ -8,5 +9,8 @@ router.get("/", (req: Request, res: Response) => {
     success: 1,
   });
 });
+
+router.use('/blog', blogRoutes)
+
 
 export default router
