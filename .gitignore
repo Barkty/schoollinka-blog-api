@@ -2,3 +2,4 @@ node_modules
 snyk-macos
 .env
 dist/
+*.http

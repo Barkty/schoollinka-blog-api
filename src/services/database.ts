@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
-import Blog from "../models/Blog";
+import Blog from "../models/Blog.entity";
 import dotenv from "dotenv"
-import Comment from "../models/Comments";
+import Comment from "../models/Comment.entity";
 
 dotenv.config()
 
@@ -15,6 +15,6 @@ export const AppDataSource = new DataSource({
     password: DB_PASSWORD,
     database: DB_NAME,
     synchronize: true,
-    logging: true,
+    // logging: true,
     entities: [Blog, Comment],
 })
