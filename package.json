@@ -2,7 +2,7 @@
   "name": "schoollinka-blog-api",
   "version": "1.0.0",
   "description": "A Schoollinka Blog API",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
