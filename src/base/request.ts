@@ -1,6 +1,7 @@
 import { createValidator } from 'express-joi-validation'
 import { NextFunction, Request, Response } from 'express'
 import Joi from 'joi'
+import _ from 'lodash'
 import asyncWrapper from '../middlewares/async'
 import { error } from '../helpers/response'
 
@@ -39,13 +40,9 @@ export const updateCommentSchema = Joi.object({
 export const validateCreateBlog = asyncWrapper(async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { body, files } = req
-        let avatar: string[] = []
         
         if (files) {
-            files.map((file: any) => {
-                const { path } = file
-                avatar.push(path)
-            })
+            const avatar = _.map([files], 'path')
             body.avatar = avatar
         }
 
