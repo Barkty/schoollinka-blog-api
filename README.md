@@ -104,7 +104,7 @@ To run this locally, you need to have [Typescript](https://typescriptlang.org) a
 To run this project,
 
 ```
-npm install
+npm install && npx tsc
 npm run dev
 ```
 

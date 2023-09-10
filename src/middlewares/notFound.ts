@@ -7,7 +7,7 @@ import { Request, Response } from "express";
 const notFound = (req: Request, res: Response) => {
     res.status(404).send({
       // eslint-disable-next-line max-len
-      message: `OOPs!! Server can't find ${req.originalUrl}.This could be a typographical issue.Check the API specification for further guidance`,
+      message: `OOPs!! Server can't find ${req.originalUrl}. This could be a typographical issue. Check the API specification for further guidance`,
       success: 0,
     });
 };

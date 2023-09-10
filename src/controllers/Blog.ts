@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { error, success } from "../helpers/response"
 import BlogRepository from "../repository/Blog.service"
 import asyncWrapper from "../middlewares/async"
+import { createCustomError } from "../utils/customError"
 
 const blogRepository = new BlogRepository()
 
@@ -24,9 +25,13 @@ export const getBlog = asyncWrapper(async (req: Request, res: Response) => {
 
         const blog = await blogRepository.findOne(id)
 
+        if (!blog) {
+            throw createCustomError('Blog does not exist', 404)
+        }
+
         return success(res, 200, blog)
-    } catch (e) {
-        return error(res, 500, e)
+    } catch (e: any) {
+        return error(res, e?.statusCode || 500, e)
     }
 })
 
