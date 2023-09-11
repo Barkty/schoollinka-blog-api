@@ -42,7 +42,7 @@ export const validateCreateBlog = asyncWrapper(async (req: Request, res: Respons
         const { body, files } = req
         
         if (files) {
-            const avatar = _.map([files], 'path')
+            const avatar = _.map([...<[]>files], 'path')
             body.avatar = avatar
         }
 

@@ -14,8 +14,8 @@ export const getBlogs = asyncWrapper(async (req: Request, res: Response) => {
         const blogs = await blogRepository.findAll(Number(page), Number(limit), String(title))
 
         return success(res, 200, blogs)
-    } catch (e) {
-        return error(res, 500, e)
+    } catch (e: any) {
+        return error(res, e?.statusCode || 500, e)
     }
 })
 
@@ -42,8 +42,8 @@ export const createBlog = asyncWrapper(async (req: Request, res: Response) => {
         const blog = await blogRepository.create(body)
 
         return success(res, 201, blog)
-    } catch (e) {
-        return error(res, 500, e)
+    } catch (e: any) {
+        return error(res, e?.statusCode || 500, e)
     }
 })
 
@@ -53,10 +53,10 @@ export const updateBlog = asyncWrapper(async (req: Request, res: Response) => {
 
         const blog = await blogRepository.updateOne(Number(id), body)
 
-        return success(res, 200, blog)
+        return success(res, 202, blog)
 
-    } catch (e) {
-        return error(res, 500, e)
+    } catch (e: any) {
+        return error(res, e?.statusCode || 500, e)
     }
 })
 
@@ -68,7 +68,7 @@ export const deleteBlog = asyncWrapper(async (req: Request, res: Response) => {
 
         return success(res, 200, blog)
 
-    } catch (e) {
-        return error(res, 500, e)
+    } catch (e: any) {
+        return error(res, e?.statusCode || 500, e)
     }
 })

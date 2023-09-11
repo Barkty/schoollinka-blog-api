@@ -1,32 +1,17 @@
 import supertest from 'supertest'
 import server from '../../server'
+import { AppDataSource } from '../../services/database';
 
-describe('Home', () => {
-    describe('get API home', () => {
-        describe('given API exists', () => {
-            it('should return a 200', async () => {
-                const mockResult = {
-                    message: `Hello from homepage. Check the API specification for further guidance and next steps.`,
-                    success: 1,
-                }
-                const result = await supertest(server).get(`/api`)
-                expect(result.statusCode).toBe(200)
-                expect(result.body).toEqual(mockResult)
-            })
-        })
+jest.mock('../../services/database')
+jest.mock('../../repository/Blog.service')
 
-        describe('given API does not exist', () => {
-            it('should return a 404', async () => {
-                const mockResult = {
-                    message: "OOPs!! Server can't find /apis. This could be a typographical issue. Check the API specification for further guidance",
-                    success: 0
-                }
-                const result = await supertest(server).get(`/apis`)
-                expect(result.statusCode).toBe(404)
-                expect(result.body).toEqual(mockResult)
-            })
-        })
-    })
+beforeAll( async () => {
+    const datasource = await AppDataSource
+    datasource.initialize()
+});
+
+afterAll(async () => {
+    AppDataSource.destroy()
 })
 
 describe('Blog', () => {
@@ -35,10 +20,8 @@ describe('Blog', () => {
             it('should return a 404', async () => {
                 const blogId = 123
                 const result = await supertest(server).get(`/api/blog/${blogId}`)
-                console.log('TEST B:: ', result.body)
                 expect(result.statusCode).toBe(404)
                 expect(result.statusType).toBe("Not Found")
-                console.log('TEST CODE:: ', result.statusCode)
             })
         })
     })

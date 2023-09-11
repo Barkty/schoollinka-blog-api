@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
-import Blog from "../models/Blog.entity";
 import dotenv from "dotenv"
+import Blog from "../models/Blog.entity";
 import Comment from "../models/Comment.entity";
 
 dotenv.config()
