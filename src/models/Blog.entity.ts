@@ -15,7 +15,7 @@ class Blog {
     @Column('text')
     content?: string
 
-    @Column('int', { nullable: true })
+    @Column('int', { nullable: true, default: 0 })
     likes?: number
 
     @CreateDateColumn()
