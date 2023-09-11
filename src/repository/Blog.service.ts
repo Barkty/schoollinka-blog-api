@@ -91,7 +91,9 @@ class BlogRepository {
         try {
             const user = await this.findOne(id)
         
-            return await this.repo.remove(user)
+            if (user) return await this.repo.remove(user)
+            
+            throw createCustomError('Blog does not exist', 404)
             
         } catch (e) {
             throw e
