@@ -94,7 +94,7 @@ class BlogRepository {
             if (user) return await this.repo.remove(user)
             
             throw createCustomError('Blog does not exist', 404)
-            
+
         } catch (e) {
             throw e
         }
@@ -111,8 +111,6 @@ class BlogRepository {
           let likes = blog.likes
           
           Object.assign(blog, updates)
-
-          console.log('LIKES:: ', blog)
 
           if (updates.likes) {
             likes += 1

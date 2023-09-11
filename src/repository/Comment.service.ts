@@ -15,7 +15,6 @@ class CommentRepository {
 
     create = async (blogId: number, body: IComment) => {
         try {
-            console.log('ID:: ', blogId)
             const comment = await this.repo.create({ ...body })
             const blog = await this.blogRepo.findOne(blogId)
             const comments = blog.comments || []
