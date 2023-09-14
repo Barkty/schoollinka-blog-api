@@ -74,7 +74,7 @@ class BlogRepository {
             let found = await this.repo.findOneBy({ title: blog.title })
             
             if (found) {
-                throw new BadRequest('Blog already exist', 400)
+                throw new BadRequest('Blog already exists', 400)
             }
 
             found = this.repo.create({ ...blog })

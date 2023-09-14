@@ -9,7 +9,7 @@ class Blog {
     @Column("varchar")
     title?: string
 
-    @Column("varchar", { array: true })
+    @Column("varchar", { array: true, nullable: true })
     avatar?: string[]
 
     @Column('text')

@@ -8,7 +8,7 @@ describe('Blog Routes', () => {
         describe('given blog does not exist', () => {
             it('should return a 404', async () => {
 
-                const blogId = 12
+                const blogId = 3
                 const result = await supertest(server).get(`/api/blog/${blogId}`)
                 console.log('TEST B:: ', result.body)
                 expect(result.statusCode).toBe(404)
