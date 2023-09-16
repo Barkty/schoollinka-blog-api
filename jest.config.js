@@ -7,7 +7,5 @@ module.exports = {
   forceExit: true,
   rootDir: 'src',
   setupFilesAfterEnv: ["<rootDir>/tests/setupAfterEnv.ts"],
-  // globalSetup: "<rootDir>/tests/setup.ts",
-  // globalTeardown: "<rootDir>/tests/teardown.ts",
   // clearMocks: true
 };

@@ -6,7 +6,7 @@ class Blog {
     @PrimaryGeneratedColumn()
     id?: number
 
-    @Column("varchar")
+    @Column("varchar", { unique: true })
     title?: string
 
     @Column("varchar", { array: true, nullable: true })

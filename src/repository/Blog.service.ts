@@ -12,7 +12,7 @@ class BlogRepository {
         this.repo = AppDataSource.getRepository(Blog)
     }
 
-    findAll = async (page: number, limit: number, title: string) => {
+    async findAll (page: number, limit: number, title?: string) {
         try {
             const skip = page === 1 ? 0 : (limit * page)
             let blogs
@@ -51,7 +51,7 @@ class BlogRepository {
         }
     }
 
-    findOne = async (id: any) => {
+    async findOne (id: any) {
         try {
 
             const blog = await this.repo.findOne({
@@ -69,7 +69,7 @@ class BlogRepository {
         }
     }
 
-    create = async (blog: IBlog) => {
+    async create (blog: IBlog) {
         try {
             let found = await this.repo.findOneBy({ title: blog.title })
             
@@ -86,12 +86,12 @@ class BlogRepository {
         }
     }
 
-    removeOne = async (id: number) => {
+    async removeOne (id: number) {
 
         try {
-            const user = await this.findOne(id)
+            const blog = await this.findOne(id)
         
-            if (user) return await this.repo.remove(user)
+            if (blog) return await this.repo.remove(blog)
             
             throw createCustomError('Blog does not exist', 404)
 
@@ -100,7 +100,7 @@ class BlogRepository {
         }
     }
 
-    updateOne = async (id: number, updates: Partial<IBlog>) => {
+    async updateOne (id: number, updates: Partial<IBlog>) {
 
         try {
             

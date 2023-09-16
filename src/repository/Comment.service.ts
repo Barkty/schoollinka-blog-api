@@ -13,7 +13,7 @@ class CommentRepository {
         this.blogRepo = new BlogRepository()
     }
 
-    create = async (blogId: number, body: IComment) => {
+    async create (blogId: number, body: IComment) {
         try {
             const comment = await this.repo.create({ ...body })
             const blog = await this.blogRepo.findOne(blogId)
@@ -30,7 +30,7 @@ class CommentRepository {
         }
     }
 
-    findOne = async (id: any) => {
+    async findOne (id: any) {
         try {
 
             const comment = await this.repo.findOneBy({ id })
