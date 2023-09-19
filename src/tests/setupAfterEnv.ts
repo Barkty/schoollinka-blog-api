@@ -1,4 +1,3 @@
-import Blog from '../models/Blog.entity';
 import BlogRepository from '../repository/Blog.service';
 import { AppDataSource } from '../services/database';
 import { blog } from './fixtures/blog';
@@ -19,6 +18,5 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-    // console.log({existingBlog})
     await dataSource.destroy()
 })

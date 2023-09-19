@@ -12,7 +12,7 @@ describe('A GET request to /api route', () => {
         expect(result.body).toEqual(mockResult)
     })
 
-    it('returns HTTP 400 for a non-existing home route', async () => {
+    it('returns HTTP 404 for a non-existing home route', async () => {
         const result = await supertest(server).get(`/apis`)
         expect(result.statusCode).toBe(404)
         expect(result.notFound).toBeTruthy()

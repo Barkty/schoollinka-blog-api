@@ -1,6 +1,6 @@
 import supertest from 'supertest'
 import server from '../../server'
-import { blogRecords, findBlog } from '../fixtures/blog'
+import { findBlog } from '../fixtures/blog'
 import { existingBlog } from '../setupAfterEnv'
 
 jest.mock('../../repository/Blog.service')
@@ -18,9 +18,8 @@ describe('A GET request to /api/blog route', () => {
         expect(result.statusCode).toBe(404)
     })
 
-    it('returns HTTP response 200 for all blog records', async () => {
+    it('returns HTTP 200 response for all blog records', async () => {
         const result = await supertest(server).get(`/api/blog?page=1&limit=20`)
-        console.log('BODY:: ', result.body)
         expect(result.status).toBe(200)
         expect(result.body).toEqual({success: 1, message: 'Successful'})
     })
