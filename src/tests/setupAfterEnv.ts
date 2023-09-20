@@ -4,7 +4,7 @@ import { blog } from './fixtures/blog';
 
 const dataSource = AppDataSource
 
-export let existingBlog: any
+var existingBlog: any
 
 beforeAll(async () => {
     await dataSource.initialize()
@@ -18,5 +18,8 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
+    await dataSource.dropDatabase()
     await dataSource.destroy()
 })
+
+export { existingBlog }
