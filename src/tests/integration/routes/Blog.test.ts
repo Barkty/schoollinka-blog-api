@@ -1,7 +1,7 @@
 import supertest from 'supertest'
-import server from '../../server'
-import { findBlog } from '../fixtures/blog'
-import { existingBlog } from '../setupAfterEnv'
+import server from '../../../server'
+import { findBlog } from '../../fixtures/blog'
+import { existingBlog } from '../../setupAfterEnv'
 
 jest.mock('../../repository/Blog.service')
 

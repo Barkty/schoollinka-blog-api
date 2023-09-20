@@ -1,6 +1,6 @@
-import Blog from '../../models/Blog.entity';
-import BlogRepository from '../../repository/Blog.service';
-import { IResult, blog, blogRecords, findBlog, updateBlog } from '../fixtures/blog';
+import Blog from '../../../models/Blog.entity';
+import BlogRepository from '../../../repository/Blog.service';
+import { IResult, blog, blogRecords, findBlog, updateBlog } from '../../fixtures/blog';
 
 const blogRepo = new BlogRepository()
 
