@@ -5,6 +5,7 @@ import { existingBlog } from '../../setupAfterEnv'
 
 
 describe('A GET request to /api/blog route', () => {
+    console.log('PP:: ', process.env.CLOUD_NAME)
     it('returns a HTTP 200 response for an existing blog', async () => {
         const result = await supertest(server).get(`/api/blog/${existingBlog.id}`)
         expect(result.statusCode).toBe(200)
