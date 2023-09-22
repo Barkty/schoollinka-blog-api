@@ -13,7 +13,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "dist/src/**/*.test.js": "npm run test"
+    "src/**/*.ts": "npm run test"
   },
   "husky": {
     "hooks": {
