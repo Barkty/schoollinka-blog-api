@@ -9,14 +9,15 @@
     "test:detect": "jest --detectOpenHandles",
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
-    "dist/**/*.test.js": "jest --detectOpenHandles"
+    "src/**/*.test.js": "npm run test:detect"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged"
+      "pre-commit": "npm run precommit && pretty-quick --staged"
     }
   },
   "keywords": [],
