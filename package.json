@@ -12,11 +12,11 @@
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
   },
   "lint-staged": {
-    "dist/**/*.test.js": "npm run test:detect"
+    "dist/**/*.test.js": "jest --detectOpenHandles"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && pretty-quick --staged"
     }
   },
   "keywords": [],
