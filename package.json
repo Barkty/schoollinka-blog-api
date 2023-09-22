@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:detect && pretty-quick --staged"
+      "pre-commit": "npm run test:detect"
     }
   },
   "keywords": [],
